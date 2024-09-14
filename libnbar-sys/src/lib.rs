@@ -1,60 +1,30 @@
 extern crate libc;
+use libc::FILE;
 
-use libc::{c_char, FILE};
-use std::ffi::CString;
-use std::ptr;
+extern "C" {
+    pub fn nbar_fopen(filename: *const libc::c_char, mode: *const libc::c_char) -> *mut NbarArchiveT;
+    pub fn nbar_fclose(handle: *mut NbarArchiveT);
+}
 
-// Declare the FFI struct and functions from libnbar
+#[repr(C)]
+pub struct NbarArchiveHeader {
+    pub _magic_left: libc::uint16_t,
+    pub file_name_length_1: libc::uint8_t,
+    pub file_name_length_2: libc::uint8_t,
+    pub file_name_1: [libc::c_char; 256],
+    pub file_name_2: [libc::c_char; 256],
+    pub file_checksum_1: [libc::c_char; 64],
+    pub file_checksum_2: [libc::c_char; 64],
+    pub file_length_1: libc::uint64_t,
+    pub file_length_2: libc::uint64_t,
+    pub _magic_right: libc::uint16_t,
+}
+
 #[repr(C)]
 pub struct NbarArchive {
-    pub header: libc::c_void,  // Dummy field for simplicity in this example
+    pub header: NbarArchiveHeaderT,
     pub ar_content_1: *mut FILE,
     pub ar_content_2: *mut FILE,
     pub ar_file: *mut FILE,
 }
 
-// Extern block to declare FFI functions from the libnbar library
-extern "C" {
-    pub fn nbar_fopen(filename: *const c_char, mode: *const c_char) -> *mut NbarArchive;
-    pub fn nbar_fclose(handle: *mut NbarArchive);
-}
-
-// Rust wrapper for nbar_fopen
-pub fn nbar_open(filename: &str, mode: &str) -> Option<*mut NbarArchive> {
-    let c_filename = CString::new(filename).unwrap();
-    let c_mode = CString::new(mode).unwrap();
-
-    unsafe {
-        let handle = nbar_fopen(c_filename.as_ptr(), c_mode.as_ptr());
-        if handle.is_null() {
-            None
-        } else {
-            Some(handle)
-        }
-    }
-}
-
-// Rust wrapper for nbar_fclose
-pub fn nbar_close(handle: *mut NbarArchive) {
-    unsafe {
-        if !handle.is_null() {
-            nbar_fclose(handle);
-        }
-    }
-}
-
-fn main() {
-    // Open and close an nbar archive
-    let filename = "archive.nbar";
-    let mode = "rb";
-
-    match nbar_open(filename, mode) {
-        Some(handle) => {
-            println!("Successfully opened archive");
-            nbar_close(handle);
-        }
-        None => {
-            eprintln!("Failed to open archive");
-        }
-    }
-}
