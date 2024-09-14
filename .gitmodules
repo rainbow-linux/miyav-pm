@@ -1,0 +1,3 @@
+[submodule "libnbar-sys/sys-libnbar"]
+	path = libnbar-sys/sys-libnbar
+	url = https://github.com/rainbow-linux/libnbar.git
