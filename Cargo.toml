@@ -5,4 +5,10 @@ edition = "2021"
 
 [dependencies]
 clap = "4.5.13"
-mlua = "0.9.9"
+mlua = {version = "0.9.9", features = ["lua54"] }
+indicatif = "0.17.8"
+zstd = "0.13.2"
+anyhow = "1.0.88"
+nix = "0.29.0"
+log = "0.4.22"
+libnbar_sys = { path = "libnbar-sys" }

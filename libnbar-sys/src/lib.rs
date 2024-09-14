@@ -2,8 +2,8 @@ extern crate libc;
 use libc::FILE;
 
 extern "C" {
-    pub fn nbar_fopen(filename: *const libc::c_char, mode: *const libc::c_char) -> *mut NbarArchiveT;
-    pub fn nbar_fclose(handle: *mut NbarArchiveT);
+    pub fn nbar_fopen(filename: *const libc::c_char, mode: *const libc::c_char) -> *mut NbarArchive;
+    pub fn nbar_fclose(handle: *mut NbarArchive);
 }
 
 #[repr(C)]

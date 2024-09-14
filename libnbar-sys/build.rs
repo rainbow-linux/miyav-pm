@@ -1,4 +1,5 @@
 use std::process::Command;
+use std::env;
 
 fn main() {
     let xmake_dir = "sys-libnbar/";
@@ -15,5 +16,5 @@ fn main() {
     let xmake_out_dir = format!("{}/build/linux/x86_64/release", xmake_dir);
 
     println!("cargo:rustc-link-search=native={}", xmake_out_dir);
-    println!("cargo:rustc-link-lib=shared=libnbar");
+    println!("cargo:rustc-link-lib=dylib=libnbar");
 }
