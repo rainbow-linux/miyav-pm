@@ -22,7 +22,7 @@ pub struct NbarArchiveHeader {
 
 #[repr(C)]
 pub struct NbarArchive {
-    pub header: NbarArchiveHeaderT,
+    pub header: NbarArchiveHeader,
     pub ar_content_1: *mut FILE,
     pub ar_content_2: *mut FILE,
     pub ar_file: *mut FILE,
