@@ -3,9 +3,11 @@ name = "iris-pm"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name = "iris"
+
 [dependencies]
 clap = { version = "4.5.17", features = ["derive"] }
-
 mlua = { version = "0.9.9", features = ["lua54"] }
 indicatif = "0.17.8"
 zstd = "0.13.2"
