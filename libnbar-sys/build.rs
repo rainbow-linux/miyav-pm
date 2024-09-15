@@ -1,5 +1,4 @@
 use std::process::Command;
-use std::env;
 
 fn main() {
     let xmake_dir = "sys-libnbar/";
