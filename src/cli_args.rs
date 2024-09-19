@@ -6,7 +6,7 @@ use clap::{Subcommand, Parser};
 #[command(about = "Manage packages on a Rainbow Linux system", long_about = None)]
 pub struct MiyavArgs {
     #[command(subcommand)]
-    pub(crate) command: MiyavSubcommand,
+    pub(crate) command: Option<MiyavSubcommand>,
 
 }
 
