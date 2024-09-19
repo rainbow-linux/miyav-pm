@@ -8,10 +8,13 @@ name = "miyav"
 
 [dependencies]
 clap = { version = "4.5.17", features = ["derive"] }
-mlua = { version = "0.9.9", features = ["lua54"] }
+mlua = { version = "0.9.9", features = ["lua54", "serialize"] }
 indicatif = "0.17.8"
 zstd = "0.13.2"
 anyhow = "1.0.88"
 nix = "0.29.0"
 log = "0.4.22"
 libnbar_sys = { path = "libnbar-sys" }
+chrono = "0.4.38"
+chrono-tz = "0.10.0"
+url = { version = "2.5.2", features = ["serde"] }
