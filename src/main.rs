@@ -1,7 +1,7 @@
 use clap::Parser;
-use iris_pm::cli_args::IrisArgs;
+use miyav::cli_args::MiyavArgs;
 
 fn main() {
-    let args = IrisArgs::try_parse().unwrap();
+    let args = MiyavArgs::try_parse().unwrap();
     println!("{:#?}", args);
 }

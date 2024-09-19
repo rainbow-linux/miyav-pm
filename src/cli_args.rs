@@ -2,16 +2,16 @@ use clap::{Subcommand, Parser};
 
 /// Manage packages on a Rainbow Linux system
 #[derive(Parser, Debug)]
-#[command(name = "iris")]
+#[command(name = "miyav")]
 #[command(about = "Manage packages on a Rainbow Linux system", long_about = None)]
-pub struct IrisArgs {
+pub struct MiyavArgs {
     #[command(subcommand)]
-    pub(crate) command: IrisSubcommand,
+    pub(crate) command: MiyavSubcommand,
 
 }
 
 #[derive(Debug, Subcommand)]
-pub enum IrisSubcommand {
+pub enum MiyavSubcommand {
     Pack,
     Extract,
     Publish,
