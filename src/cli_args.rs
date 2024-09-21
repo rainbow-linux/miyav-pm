@@ -7,7 +7,14 @@ use clap::{Subcommand, Parser};
 #[command(name = "miyav")]
 #[command(about = "Manage packages on a Rainbow Linux system", long_about = None)]
 pub struct MiyavArgs {
+    #[arg(short='C',long)]
+    /// The path to the config.lua file
+    pub config: Option<PathBuf>,
+    #[arg(short='S',long)]
+    /// The rootfs to operate on.
+    pub rootfs: Option<PathBuf>,
     #[command(subcommand)]
+    /// The action Miyav should take.
     pub(crate) command: MiyavSubcommand,
 
 }
