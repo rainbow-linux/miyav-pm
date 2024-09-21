@@ -1,3 +1,5 @@
+use std::path::PathBuf;
+
 use clap::{Subcommand, Parser};
 
 /// Manage packages on a Rainbow Linux system
@@ -12,16 +14,34 @@ pub struct MiyavArgs {
 
 #[derive(Debug, Subcommand)]
 pub enum MiyavSubcommand {
-    Pack,
-    Extract,
-    Publish,
-    Install,
-    Build,
+    Pack {
+        path: PathBuf 
+    },
+    Extract {
+        path: PathBuf,
+    },
+    Publish {
+        path: Option<PathBuf>
+    },
+    Install {
+        packages: Vec<String>
+    },
+    Build {
+        path: Option<PathBuf>
+    },
     Clean,
     Purge,
-    Uninstall,
-    Search,
-    Show,
-    Update,
+    Uninstall {
+        packages: Vec<String>
+    },
+    Search {
+        keywords: Vec<String>
+    },
+    Show{ 
+        packages: Vec<String> 
+    },
+    Update {
+        packages: Vec<String>
+    },
     Sync,
 }
