@@ -6,6 +6,7 @@ pub fn pack(args: cli_args::MiyavSubcommand) -> Result<(), String> {
         if let cli_args::MiyavSubcommand::Pack { path } = args {
             let pack_source = 
             path
+            .clone()
             .unwrap()
             .to_str()
             .to_owned()

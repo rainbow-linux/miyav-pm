@@ -18,3 +18,4 @@ libnbar_sys = { path = "libnbar-sys" }
 chrono = "0.4.38"
 chrono-tz = "0.10.0"
 url = { version = "2.5.2", features = ["serde"] }
+semver = "1.0.23"
